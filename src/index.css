@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+body {
+  @apply min-h-screen;
+  background-color: #261d45;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%230d1eae' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+
+.roboto-1 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 85;
+}
+
+.roboto-2 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 85;
+}
+
+.roboto-3 {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 85;
+}
+
+.Navbar{
+  backdrop-filter: blur(30px);
+  box-shadow: 0px 0px 30px rgba(227,228, 237,0.37);
+}
+
+.animated-border {
+  position: relative;
+  z-index: 0;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem; /* matches rounded-xl */
+  padding: 2px;
+  background: transparent;
+  border: 2px solid #ad46ff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s, box-shadow 0.3s;
+}
+
+.animated-border:hover::before,
+.animated-border:focus::before {
+  opacity: 1;
+  box-shadow: 0 0 12px 3px #ad46ff;
+  animation: border-pulse 0.9s cubic-bezier(.4,0,.2,1) infinite;
+}
+
+@keyframes border-pulse {
+  0%, 100% { box-shadow: 0 0 12px 3px #ad46ff; }
+  50%      { box-shadow: 0 0 24px 6px #ad46ff; }
+}
