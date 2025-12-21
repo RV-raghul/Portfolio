@@ -19,7 +19,7 @@ function BottomNav() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + window.innerHeight / 3;
-      let current = SECTIONS[0].id; // fixed: use first section id
+      let current = SECTIONS[0].id;
       for (const section of SECTIONS) {
         const el = document.getElementById(section.id);
         if (el && el.offsetTop <= scrollPos) {
@@ -46,9 +46,9 @@ function BottomNav() {
     window.addEventListener("scroll", showAndReset, opts);
     window.addEventListener("mousemove", showAndReset, opts);
     window.addEventListener("touchstart", showAndReset, opts);
-    window.addEventListener("keydown", showAndReset); // keydown can't be passive
+    window.addEventListener("keydown", showAndReset);
 
-    // Start timer once mounted so it can hide after initial 2s if idle
+    // start timer once mounted
     showAndReset();
 
     return () => {
@@ -71,33 +71,46 @@ function BottomNav() {
       onMouseEnter={() => setHidden(false)}
       onFocus={() => setHidden(false)}
       className={[
-        "fixed bottom-20 left-1/2 -translate-x-1/2 bg-[#1c1c2b] px-6 py-3 rounded-full shadow-lg flex gap-6 items-center z-50 transition-all duration-300",
+        "fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50",
+        "transition-all duration-300",
         hidden ? "opacity-0 translate-y-4 pointer-events-none" : "opacity-100 translate-y-0",
       ].join(" ")}
       aria-hidden={hidden ? "true" : "false"}
     >
-      {SECTIONS.map(({ id, icon: Icon, aria }) => (
-        <button
-          key={id}
-          aria-label={aria}
-          onClick={() => scrollToSection(id)}
-          className={`group relative transition-all focus:outline-none ${
-            active === id
-              ? "bg-[#ad46ff] p-3 rounded-full text-white shadow-md scale-110"
-              : "text-gray-400 hover:text-white"
-          }`}
-        >
-          <Icon size={24} />
-          {/* Tooltip */}
-          <span
-            className="absolute left-1/2 bottom-full mb-3 w-max -translate-x-1/2 px-2 py-1 rounded-md bg-black text-white text-xs
-              opacity-0 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none transition-opacity transition-transform
-              translate-y-2 z-50"
-          >
-            {aria}
-          </span>
-        </button>
-      ))}
+      <div className="relative">
+        {/* glow behind bar */}
+        <div
+          className="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-r from-purple-500/40 via-fuchsia-500/30 to-indigo-500/40 opacity-70 blur-md"
+          aria-hidden="true"
+        />
+        {/* glass bar */}
+        <div className="relative bg-[#141427]/80 backdrop-blur-xl border border-white/15 px-5 py-2.5 rounded-full shadow-lg shadow-black/40 flex gap-4 md:gap-6 items-center">
+          {SECTIONS.map(({ id, icon: Icon, aria }) => (
+            <button
+              key={id}
+              aria-label={aria}
+              onClick={() => scrollToSection(id)}
+              className={[
+                "group relative flex items-center justify-center rounded-full transition-all duration-200 focus:outline-none",
+                active === id
+                  ? "bg-[#ad46ff] text-white shadow-md shadow-purple-500/50 scale-110"
+                  : "text-gray-300/70 hover:text-white hover:bg-white/10",
+                "h-10 w-10 md:h-11 md:w-11",
+              ].join(" ")}
+            >
+              <Icon size={22} />
+              {/* Tooltip */}
+              <span
+                className="absolute left-1/2 bottom-full mb-3 -translate-x-1/2 px-2.5 py-1 rounded-md bg-black/80 text-white text-[11px]
+                  opacity-0 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none
+                  transition-opacity transition-transform translate-y-1 z-50 whitespace-nowrap"
+              >
+                {aria}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
