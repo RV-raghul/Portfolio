@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Home as HomeIcon, User, Laptop, Wrench } from "lucide-react";
+import { Home as HomeIcon, User, Laptop, Wrench, Contact as ContactIcon } from "lucide-react";
 
 // Section and icon mapping
 const SECTIONS = [
-  { id: "home",     icon: HomeIcon, aria: "Home" },
-  { id: "about",    icon: User,     aria: "About" },
-  { id: "skills",   icon: Wrench,   aria: "Skills" },
-  { id: "projects", icon: Laptop,   aria: "Projects" },
+  { id: "home",     icon: HomeIcon,    aria: "Home" },
+  { id: "about",    icon: User,        aria: "About" },
+  { id: "skills",   icon: Wrench,      aria: "Skills" },
+  { id: "projects", icon: Laptop,      aria: "Projects" },
+  { id: "contact",  icon: ContactIcon, aria: "Contact" },
 ];
 
 function BottomNav() {
@@ -18,7 +19,7 @@ function BottomNav() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + window.innerHeight / 3;
-      let current = SECTIONS.id;
+      let current = SECTIONS[0].id; // fixed: use first section id
       for (const section of SECTIONS) {
         const el = document.getElementById(section.id);
         if (el && el.offsetTop <= scrollPos) {
@@ -41,7 +42,6 @@ function BottomNav() {
       idleTimerRef.current = setTimeout(() => setHidden(true), 2000);
     };
 
-    // Consider scroll, mouse, touch, and keyboard as activity
     const opts = { passive: true };
     window.addEventListener("scroll", showAndReset, opts);
     window.addEventListener("mousemove", showAndReset, opts);
@@ -68,7 +68,6 @@ function BottomNav() {
 
   return (
     <div
-      // Keep visible when hovered/focused to avoid flicker as the timer runs
       onMouseEnter={() => setHidden(false)}
       onFocus={() => setHidden(false)}
       className={[
@@ -84,7 +83,7 @@ function BottomNav() {
           onClick={() => scrollToSection(id)}
           className={`group relative transition-all focus:outline-none ${
             active === id
-              ? "bg-purple-500 p-3 rounded-full text-white shadow-md scale-110"
+              ? "bg-[#ad46ff] p-3 rounded-full text-white shadow-md scale-110"
               : "text-gray-400 hover:text-white"
           }`}
         >

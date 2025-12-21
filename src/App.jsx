@@ -46,6 +46,11 @@ function App() {
         <Projects />
         </AnimateOnScroll>
       </section>
+       <section 
+       id="contact" className="scroll-mt-24 min-h-screen" tabIndex={-1}
+       >
+        <ContactSection/>
+      </section>
       <section
       >
         <AnimateOnScroll>
