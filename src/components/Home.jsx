@@ -31,7 +31,7 @@ function Home() {
               <span className="text-[#ad46ff]">MERN Stack</span>
             </p>
 
-            {/* Short value line (optional but recommended) */}
+            {/* Short value line */}
             <p className="text-white/70 text-sm md:text-base mt-2">
               Building scalable, data‑driven web applications with clean
               architecture and smooth user experiences.
@@ -112,12 +112,12 @@ function Home() {
                 </svg>
               </a>
 
-              {/* Email */}
+              {/* ✅ CHANGED: Email now links to #contact */}
               <a
-                href="mailto:ravipanneer2001@gmail.com"
+                href="#contact"
                 className="inline-flex items-center justify-center border border-[#ad46ff] p-2.5 rounded-full transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:bg-[#ad46ff]"
-                title="Email"
-                aria-label="Email"
+                title="Contact Form"
+                aria-label="Contact Form"
               >
                 <svg
                   width="28"

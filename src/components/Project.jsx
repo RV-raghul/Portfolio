@@ -23,10 +23,10 @@ const projects = [
     description:
       "A full-stack password management platform with AES-256 encryption, secure JWT authentication, real-time favorites and search filtering, soft delete with trash recovery, and responsive dashboard for seamless credential management across devices.",
     stack: ["MongoDB", "ExpressJS", "ReactJS", "NodeJS", "Encryption"],
-    live: "https://secure-vault-ravi.netlify.app/",
+    live: "https://rv-password-management-system.netlify.app/",
     sourceCode: "",
-    FrontendCode: "",
-    BackendCode: "",
+    FrontendCode: "https://github.com/RV-raghul/Password-Management-System-Frontend",
+    BackendCode: "https://github.com/RV-raghul/Password-Management-System-Backend",
   }
 ];
 
@@ -192,7 +192,7 @@ export default function Project() {
     <div className="max-w-5xl mx-auto px-4 pt-10 pb-16">
       {/* Main Projects Section */}
       <div className="text-center mb-10">
-        <p className="text-xs tracking-[0.3em] text-purple-300/70 uppercase mb-2">
+        <p className="text-2xl tracking-[0.3em] text-purple-300/70 uppercase mb-2">
           Featured
         </p>
         <h2 className="text-3xl md:text-4xl text-purple-200 font-bold mb-2">
@@ -223,7 +223,7 @@ export default function Project() {
 
       {/* Mini Projects Section */}
       <div className="text-center mb-10">
-        <p className="text-xs tracking-[0.3em] text-purple-300/70 uppercase mb-2">
+        <p className="text-2xl tracking-[0.3em] text-purple-300/70 uppercase mb-2">
           Experiments
         </p>
         <h2 className="text-2xl md:text-3xl text-purple-200 font-bold mb-2">
